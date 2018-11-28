@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>stack-demo</title>
+	</head>
+	<body>
+		<script src="stack.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function mulBase(num,base){
+				let s = new Stack();
+				do{
+					s.push(num%base);
+					num = Math.floor(num /= base);
+				}while(num > 0);
+				
+				let converted = '';
+				while(s.length() > 0){
+					converted += s.pop();
+				}
+				
+				return converted;
+			}
+			
+			console.log(mulBase(1,2));
+		</script>
+	</body>
+</html>

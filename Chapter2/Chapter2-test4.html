@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			function OutputWord(){
+				this.wordArray = [];
+				this.letter = function(arr){
+					this.wordArray = arr;
+				};
+				this.outputWord = function(){
+					let word = '';
+					for(let i = 0; i < this.wordArray.length; i++){
+						word += this.wordArray[i];
+					}
+					
+					return word;
+				};
+			}
+			
+			
+			let word2 = new OutputWord();
+			let arrLetter = ['h','e','l','l','o'];
+			word2.letter(arrLetter);
+			
+			let hello = word2.outputWord();
+			console.log(hello)
+		</script>
+	</body>
+</html>

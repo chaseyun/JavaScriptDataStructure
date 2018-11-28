@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="renderer" content="webkit"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<title></title>
+	</head>
+	<body>
+		<script src="stack.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function checkBrackets(exp){
+				let s = new Stack();
+				let s2 = new Stack();
+				let arr = exp.split('');
+				console.log(arr);
+				
+				let brackets = '';
+				
+				for(let i=0; i<arr.length; i++){
+					if(arr[i] == '('){
+						s.push(arr[i]);
+						console.log(s.top);
+						s2.push(i);
+					}
+					if(arr[i] == ')'){
+						brackets = s.pop();
+						console.log(1);
+					}
+				}
+				
+				console.log(s2);
+			}
+			
+			let exp1 = '7*3+5*1-7()';
+			
+			checkBrackets(exp1);
+		</script>
+	</body>
+</html>

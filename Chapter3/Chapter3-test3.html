@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="renderer" content="webkit"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<title>Chapter3-test3</title>
+	</head>
+	<body>
+		<script src="list.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			let peoples = new List();
+			
+			function addPerson(name,sex){
+				let p = new Person(name,sex);
+				peoples.append(p);
+			}
+			
+			function Person(name,sex){
+				this.name = name;
+				this.sex = sex;
+			}
+			
+			addPerson('追云','male');
+			addPerson('青梅竹马散天涯','female');
+			addPerson('陆学霸','male');
+			addPerson('石三伢子逆袭','male');
+			addPerson('阁楼看雨','female');
+			addPerson('分外妖娆','female');
+			addPerson('忽悠你心里','female');
+			addPerson('落花亦听曲','female');
+			addPerson('追小云','female');
+			addPerson('宋二狗','male');
+			
+			console.log(peoples.toShow());
+			
+			
+			let arrMale = [];
+			let arrFemale = [];
+			let arrUnSex = [];
+			
+			function classify(list){
+				
+				for(let i=0; i<list.dataStore.length; i++){
+					if(list.dataStore[i].sex == 'male'){
+						arrMale.push(list.dataStore[i]);
+					}else if(list.dataStore[i].sex == 'female'){
+						arrFemale.push(list.dataStore[i]);
+					}else{
+						arrUnSex.push(list[i]);
+					}
+				}
+				
+				
+			}
+			
+			classify(peoples);
+			
+			console.log(arrMale);
+			console.log(arrFemale);
+			console.log(arrUnSex);
+		</script>
+	</body>
+</html>

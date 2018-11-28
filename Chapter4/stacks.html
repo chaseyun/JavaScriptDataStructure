@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="renderer" content="webkit"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<title>stack</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//栈 stack 后进先出
+			function Stack(){
+				this.dataStore = [];
+				this.top = 0;
+				this.push = push;
+				this.pop = pop;
+				this.peek = peek;
+				this.length = length;
+				this.clear = clear;
+			}
+			
+			function push(element){
+				this.dataStore[this.top++] = element;
+			}
+			
+			function pop(){
+				return this.dataStore[--this.top];
+			}
+			
+			function peek(){
+				return this.dataStore[this.top-1];
+			}
+			
+			function length(){
+				return this.top;
+			}
+			//清除为假清除 对象中仍存在数据 只是无法访问
+			function clear(){
+				return this.top = 0;
+			}
+			
+			let s = new Stack();
+			
+			s.push('追小云');
+			s.push('宋二狗');
+			s.push('追云');
+			s.push('青梅竹马散天涯');
+			console.log(s.peek());
+			console.log(s.length());
+			s.pop();
+			console.log(s.peek());
+			console.log(s.length());
+			s.clear();
+			console.log(s.peek());
+			console.log(s);
+		</script>
+	</body>
+</html>

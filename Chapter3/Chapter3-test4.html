@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="renderer" content="webkit"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<title></title>
+	</head>
+	<body>
+		<script src="list.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			let bookList = new List();
+			let customers = new List();
+			let haveRead = new List();
+			
+			bookList.append('Head First HTML与CSS');
+			bookList.append('CSS权威指南');
+			bookList.append('JavaScript高级程序设计');
+			bookList.append('Header First C#');
+			
+			function displayList(list){
+				for(list.front(); list.currPos() < list.length(); list.next()){
+					if(list.getElement() instanceof Customer){
+						console.log(list.getElement()['reader'] + ',' + list.getElement()['book']);
+					}else{
+						console.log(list.getElement());
+					}
+				}
+			}
+			
+			function Customer(reader,book){
+				this.reader = reader;
+				this.book = book;
+			}
+			
+			function checkOut(reader,book,bookList,customers){
+				if(bookList.contains(book)){
+					let c = new Customer(reader,book);
+					customers.append(c);
+					bookList.remove(book);
+					haveRead.append(book);
+				}else{
+					console.log(book + '不存在！');
+				}
+			}
+			
+			displayList(bookList);
+			checkOut('追小云','Head First HTML与CSS',bookList,customers);
+			displayList(customers);
+			displayList(bookList);
+			displayList(haveRead);
+		</script>
+	</body>
+</html>

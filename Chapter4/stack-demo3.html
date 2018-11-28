@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="renderer" content="webkit"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<title>stack-demo3</title>
+	</head>
+	<body>
+		<script src="stack.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function fact(n){
+				let s = new Stack();
+				while(n > 1){
+					s.push(n--);
+				}
+				
+				let product = 1;
+				while(s.length() > 0){
+					product *= s.pop();
+				}
+				
+				return product;
+			}
+			
+			console.log(fact(5));
+			
+		</script>
+	</body>
+</html>

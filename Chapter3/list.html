@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="renderer" content="webkit"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<title>list</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function List(){
+				this.listSize = 0;
+				this.pos = 0;
+				this.dataStore = [];
+				this.clear = clear;
+				this.find = find;
+				this.toShow = toShow;
+				this.insert = insert;
+				this.append = append;
+				this.remove = remove;
+				this.front = front;
+				this.end = end;
+				this.prev = prev; 
+				this.next = next;
+				this.hasNext = hasNext;
+				this.hasPrev = hasPrev;
+				this.length = length;
+				this.currPos = currPos;
+				this.moveTo = moveTo;
+				this.getElement = getElement;
+				this.contains = contains;
+			}
+			
+			function append(element){
+				//console.log(element);
+				this.dataStore[this.listSize++] = element;
+				
+			}
+			
+			function remove(elemnet){
+				let foundAt = this.find(element);
+				if(foundAt > -1){
+					this.dataStore.splice(foundAt,1);
+					--this.listSize;
+					return true;
+				}
+				
+				return false;
+			}
+			
+			function find(element){
+				for(let i = 0; i < this.dataStore.length; i++){
+					if(this.dataStore[i] = element){
+						return i;
+					}
+				}
+				
+				return -1;
+			}
+			
+			function length(){
+				return this.listSize;
+			}
+			
+			function toShow(){
+				return this.dataStore;
+			}
+			
+			function insert(element,after){
+				let insertPos = this.find(after);
+				if(insertPos > -1){
+					this.dataStore.splice(insertPos+1,0,element);
+					++this.listSize;
+					return true;
+				}
+				
+				return false;
+			}
+			
+			function clear(){
+				delete this.dataStore;
+				this.dataStore.length = 0;
+				this.listSize = this.pos = 0;
+			}
+			
+			function contains(element){		
+				for (let i = 0; i < this.dataStore.length; i++){
+					if(this.dataStore[i] == element){
+						return true;
+					}
+				}
+				
+				return false;
+			}
+			
+			function front(){
+				this.pos = 0;
+			}
+			
+			function end(){
+				this.pos = this.listSize-1;
+			}
+			
+			function prev(){
+				--this.pos;
+			}
+			
+			function next(){
+				if(this.pos < this.listSize){
+					++this.pos;
+				}
+			}
+			
+			function currPos(){
+				return this.pos;
+			}
+			
+			function moveTo(position){
+				this.pos = position;
+			}
+			
+			function getElement(){
+				return this.dataStore[this.pos];
+			}
+			
+			function hasNext(){
+				return this.pos < this.listSize;
+			}
+			
+			function hasPrev(){
+				return this.pos >= 0;
+			}
+			
+			let games = new List();
+			
+			games.append('梦幻西游');
+			games.append('神武');
+			games.append('红警3');
+			games.append('阿玛拉王国：惩罚');
+			games.append('极品飞车9');
+			games.append('极品飞车14');
+			games.append('皇牌空战：突击地平线');
+			games.append('文明6');
+			games.append('最终幻想15');
+			games.append('最终幻想13：雷霆归来');
+			games.append('求生之路2');
+			games.append('大话西游手游');
+			games.append('梦幻西游手游');
+			games.append('神无月');
+			
+// 			games.front();
+// 			console.log(games.getElement());
+// 			
+// 			games.next();
+// 			console.log(games.getElement());
+// 			
+// 			games.next();
+// 			games.next();
+// 			games.prev();
+// 			console.log(games.getElement());
+// 			games.moveTo(8);
+// 			console.log(games.getElement());
+// 			console.log(games.currPos());
+// 			
+// 			console.log(games.length());
+// 			console.log(games.toShow());
+			console.log(games.contains("神无月"));
+			
+// 			for(games.front(); games.hasNext(); games.next()){
+// 				console.log(games.getElement());
+// 			}
+// 			
+// 			for(games.end(); games.hasPrev(); games.prev()){
+// 				console.log(games.getElement());
+// 			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="renderer" content="webkit"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<title>JavaScriptDataStructure</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let  str = "追小云";
+			let arr = str.split("");
+			let arr2 = arr;
+			
+			let arr3 = arr.concat(arr2);
+			console.log(arr3);
+			
+			console.log(arr.indexOf('云'));
+			console.log(arr3.lastIndexOf('云'));
+			
+			let str2 = arr.toString();
+			let str3 = arr3.join();
+			console.log(str2);
+			console.log(str3);
+			
+			let arr4 = arr3.splice(2,2);
+			console.log(arr4)
+			let arr5 = arr3;
+			console.log(arr5);
+			
+			console.log(arr)
+			//push() 数组的尾部添加新的子项 返回值为数组的长度
+			let arr7 = arr.push("锋芒毕露");
+			console.log(arr);
+			let arr6 = arr;
+			console.log(arr6);
+			console.log(Object.prototype.toString.call(arr7));
+			//unshift() 数组的头部 添加一个子项 返回值 为数组的长度
+			let arr8 = arr.unshift("龙城飞将");
+			console.log(arr);
+			console.log(Object.prototype.toString.call(arr8));
+			console.log(arr8);
+			//pop() 从数组的尾部删除子项  返回值为删除的子项
+			let arr9 = arr.pop();
+			console.log(arr);
+			console.log(arr9);
+			console.log(Object.prototype.toString.call(arr9));
+			//shift() 从数组的头部删除子项 返回值为数组的子项
+			let arr10 = arr.shift();
+			console.log(arr);
+			console.log(arr10);
+			console.log(Object.prototype.toString.call(arr10));
+			// splice() 从数组中间添加新的子项  返回值为空数组
+			let arr11 = arr.splice(1,0,'苏堤春晓');
+			console.log(arr);
+			console.log(arr11);
+			
+			
+			//创建多维数组
+			let twod = [];
+			let rows = 5;
+			for(let i = 0; i < rows; i++){
+				twod[i] = [];
+			}
+			
+			console.log(twod);
+			console.log(twod[0]);
+			
+			Array.matrix = function(numrows,numcols,initial){
+				let arr = [];
+				
+				for(let i = 0; i < numrows; i++){
+					let columns = [];
+					for(let i = 0; i < numcols; i++){
+						columns[i] = initial;
+					}
+					
+					arr[i] = columns;
+				}
+				
+				return arr;
+			}
+			
+			let arr12 = Array.matrix(5,5,0);
+			console.log(arr12);
+			console.log(arr12[0][0])
+		</script>
+	</body>
+</html>

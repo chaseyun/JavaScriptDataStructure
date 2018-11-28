@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//记录学生成绩的对象 一个添加成绩的方法, 显示平均成绩的方法
+	
+			function AchieveRecord(){
+				this.subjectGrade = [];
+				this.add = add;
+				this.average = average;
+			}
+			
+			function add(subject,grade){
+				function CreateSubject(subject,grade){
+					this.subject = subject;
+					this.grade = grade;
+				}
+				
+				let obj = new CreateSubject(subject,grade);
+				
+				this.subjectGrade.push(obj);
+			}
+			
+			function average(){
+				let total = 0;
+				for(let i = 0; i<this.subjectGrade.length; i++){
+					total += this.subjectGrade[i].grade;
+				}
+				
+				return total/this.subjectGrade.length;
+			}
+			
+			let leeAchieveRecord = new AchieveRecord();
+			
+			leeAchieveRecord.add('语文',78);
+			leeAchieveRecord.add('数学',88);
+			leeAchieveRecord.add('嘤语',91);
+			leeAchieveRecord.add('理综',185);
+			
+			console.log(leeAchieveRecord.average());
+		</script>
+	</body>
+</html>
