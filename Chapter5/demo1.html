@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="renderer" content="webkit"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<title>Queue</title>
+	</head>
+	<body>
+		<script src="queue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			let q = new Queue();
+			q.enqueue('追小云');
+			q.enqueue('宋二狗');
+			q.enqueue('青梅竹马散天涯');
+			q.enqueue('追云');
+			
+			q.dequeue();
+			
+			console.log(q.toShow());
+			console.log(q.front());
+			console.log(q.back());
+		</script>
+	</body>
+</html>
