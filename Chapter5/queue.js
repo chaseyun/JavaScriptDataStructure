@@ -6,6 +6,7 @@ function Queue(){
 	this.back = back;
 	this.toShow = toShow;
 	this.empty = empty;
+	this.count = count;
 }
 
 //向队尾添加一个元素
@@ -45,4 +46,9 @@ function empty(){
 	}else{
 		return false
 	}
+}
+
+//显示元素的个数
+function count(){
+	return this.dataStore.length;
 }
