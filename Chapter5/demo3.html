@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="renderer" content="webkit"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<title>Demo</title>
+	</head>
+	<body>
+		<script src="queue.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			let dancers = [['F','追云'],['M','青梅竹马散天涯'],['M','追小云'],['F','宋二狗'],['M','落花亦听曲'],['M','忽悠你心里'],['M','阁楼看雨'],['F','石三伢子逆袭'],['F','无心'],['F','雨坠激漪涟'],['F','灰州鸡']];
+			
+			function Dancer(name,sex){
+				this.name = name;
+				this.sex = sex;
+			}
+			
+			function getDancers(males,females){
+				for(let i=0; i<dancers.length; i++){
+					let sex = dancers[i][0];
+					let name = dancers[i][1];
+					
+					if(sex == 'F'){
+						females.enqueue(new Dancer(name,sex));
+					}else{
+						males.enqueue(new Dancer(name,sex));
+					}
+					
+				}
+			}
+			
+			function dancer(males,females){
+				while(!males.empty() && !females.empty()){
+					person = females.dequeue();
+					console.log(person.name);
+					person =males.dequeue();
+					console.log(person.name);
+				}
+			}
+			
+			let maleDancers = new Queue();
+			let femaleDancers = new Queue();
+			
+			getDancers(maleDancers,femaleDancers);
+			dancer(maleDancers,femaleDancers);
+			
+			//显示等候跳舞的人数
+			if(maleDancers.count() > 0){
+				console.log("还有" + maleDancers.count() + "在等待");
+			}
+			
+			if(femaleDancers.count() > 0){
+				console.log("还有" + femaleDancers.count() + "在等待");
+			}
+		</script>
+	</body>
+</html>
