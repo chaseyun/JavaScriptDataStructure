@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="renderer" content="webkit" />
+		<title></title>
+	</head>
+	<body>
+		<script src="queue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function distribute(nums,queues,n,digit){
+				for(let i=0; i<n; i++){
+					if(digit == 1){
+						queues[nums[i]%10].enqueue(nums[i]);
+						// console.log(1);
+					}else{
+						queues[Math.floor(nums[i]/10)].enqueue(nums[i]);
+						// console.log(10)
+					}
+				}
+			}
+			
+			function collect(queues,nums){
+				let i = 0;
+				for(let digit = 0; digit < 10; digit++){
+					//console.log(queues[digit]);
+					while(!queues[digit].empty()){
+						nums[i++] = queues[digit].dequeue();
+					}
+				}
+			}
+			
+			function disArray(arr){
+				for(let i=0; i<arr.length; i++){
+					console.log(arr[i] + "");
+				}
+			}
+			
+			let queues = [];
+			for(let i=0; i<10; i++){
+				queues[i] = new Queue();
+			}
+			// console.log(queues);
+			let nums = [12,27,56,31,58,13,8,98,78,61];
+// 			for(let i = 0; i < 10; i++){
+// 				nums[i] = Math.floor(Math.floor(Math.random()*101));
+// 			}
+			
+			disArray(nums);
+			distribute(nums,queues,10,1);
+			collect(queues,nums);
+			distribute(nums,queues,10,10);
+			collect(queues,nums);
+			disArray(nums);
+		</script>
+	</body>
+</html>
