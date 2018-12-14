@@ -16,8 +16,7 @@
 			//优先级判断对比
 			function dequeue(){
 				let priority = this.dataStore[0].code;
-				console.log(priority);
-				for(let i = 0; i < this.dataStore.lenght; ++i){
+				for(let i = 0; i < this.dataStore.length; ++i){
 					if(this.dataStore[i].code < priority){
 						priority = i;
 					}else{

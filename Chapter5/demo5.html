@@ -15,13 +15,11 @@
 			
 			function dequeue(){
 				let priority = this.dataStore[0].code;
-				console.log(priority);
-				for(let i = 1; i < this.dataStore.lenght; i++){
+				for(let i = 1; i < this.dataStore.length; i++){
 					if(this.dataStore[i].code < priority){
 						priority = i;
 					}
 				}
-				
 				return this.dataStore.splice(priority,1);
 			}
 			
@@ -33,16 +31,19 @@
 				return retstr;
 			}
 			
-			let p = new Patient('追小云',1);
+			let p = new Patient('追小云',5);
 			let ed = new Queue();
 			ed.enqueue(p);
-			p = new Patient('宋二狗',3);
+			p = new Patient('宋二狗',4);
 			ed.enqueue(p);
-			p = new Patient('青梅竹马散天涯',2);
+			p = new Patient('青梅竹马散天涯',6);
 			ed.enqueue(p);
-			p = new Patient('追云',4);
+			p = new Patient('追云',1);
+			ed.enqueue(p);
+			p = new Patient('石三伢子逆袭',1);
 			ed.enqueue(p);
 			console.log(ed.toShow());
+			console.log(ed);
 			
 			let seen = ed.dequeue();
 			console.log(seen);
