@@ -16,11 +16,9 @@
 			//优先级判断对比
 			function dequeue(){
 				let priority = this.dataStore[0].code;
-				for(let i = 0; i < this.dataStore.length; ++i){
+				for(let i = 0; i < this.dataStore.length; i++){
 					if(this.dataStore[i].code < priority){
 						priority = i;
-					}else{
-						priority = 0;
 					}
 				}
 				console.log(priority);
@@ -40,9 +38,9 @@
 			ed.enqueue(p);
 			p = new Patient('宋二狗',4);
 			ed.enqueue(p);
-			p = new Patient('青梅竹马散天涯',2);
+			p = new Patient('青梅竹马散天涯',4);
 			ed.enqueue(p);
-			p = new Patient('追云',4);
+			p = new Patient('追云',2);
 			ed.enqueue(p);
 			console.log(ed.toShow());
 			
