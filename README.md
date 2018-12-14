@@ -1,2 +1,3 @@
 # JavaScriptDataStructure
 JavaScriptDataStructure Test
+队列章节优先队列逻辑设计问题，原版本并未考虑第一个人的优先级 队列第一人的优先级也应该考虑 同时第一次运行队列优先级时第一个应该为优先级最高的而不是位于队列第二位的元素 并尝试修改文件为demo6

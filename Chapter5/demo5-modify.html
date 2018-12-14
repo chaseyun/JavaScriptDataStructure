@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="renderer" content="webkit" />
+		<title>优先队列修改</title>
+	</head>
+	<body>
+		<script src="queue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function Patient(name,code){
+				this.name = name;
+				this.code = code;
+			}
+			
+			//优先级判断对比
+			function dequeue(){
+				let priority = this.dataStore[0].code;
+				console.log(priority);
+				for(let i = 0; i < this.dataStore.lenght; ++i){
+					if(this.dataStore[i].code < priority){
+						priority = i;
+					}else{
+						priority = 0;
+					}
+				}
+				console.log(priority);
+				return this.dataStore.splice(priority,1);
+			}
+			
+			function toShow(){
+				let retstr = "";
+				for(let i = 0; i < this.dataStore.length; i++){
+					retstr += this.dataStore[i].name + 'code:' + this.dataStore[i].code + '\n';
+				}
+				return retstr;
+			}
+			
+			let p = new Patient('追小云',1);
+			let ed = new Queue();
+			ed.enqueue(p);
+			p = new Patient('宋二狗',4);
+			ed.enqueue(p);
+			p = new Patient('青梅竹马散天涯',2);
+			ed.enqueue(p);
+			p = new Patient('追云',4);
+			ed.enqueue(p);
+			console.log(ed.toShow());
+			
+			let seen = ed.dequeue();
+			console.log(seen);
+			console.log('Patient being treated:' + seen[0].name);
+			console.log('Patient waiting to be seen:');
+			console.log(ed.toShow());
+			
+			let seen2 = ed.dequeue();
+			console.log(seen2);
+			console.log('Patient being treated:' + seen2[0].name);
+			console.log('Patient waiting to be seen:');
+			console.log(ed.toShow());
+			
+			let seen3 = ed.dequeue();
+			console.log(seen3);
+			console.log('Patient being treated:' + seen3[0].name);
+			console.log('Patient waiting to be seen:');
+			console.log(ed.toShow());
+		</script>
+	</body>
+</html>
