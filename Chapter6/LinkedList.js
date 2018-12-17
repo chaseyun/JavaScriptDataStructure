@@ -40,10 +40,13 @@ function findPrevious(item){
 	while(!(currNode.next == null) && (currNode.next.element != item)){
 		currNode = currNode.next;
 	}
+	
+	return currNode;
 }
 
 function remove(item){
 	let prevNode = this.findPrevious(item);
+
 	if(!(prevNode.next == null)){
 		prevNode.next = prevNode.next.next;
 	}
