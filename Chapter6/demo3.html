@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>demo3</title>
+	</head>
+	<body>
+		<script src="LoopLinkedList.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			let cities = new LLList();
+			
+			cities.insert('许昌','head');
+			cities.insert('济源','许昌');
+			cities.insert('洛阳','济源');
+			cities.insert('天津','洛阳');
+			cities.insert('北京','天津');
+			cities.insert('郑州','北京');
+			
+			cities.display();
+			console.log(cities);
+			cities.remove('北京');
+			cities.display();
+			//cities.findPrevious('北京');
+		</script>
+	</body>
+</html>
