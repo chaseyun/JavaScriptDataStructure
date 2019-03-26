@@ -2,6 +2,7 @@ function HashTable(){
 	this.table = new Array(137);
 	this.simpleHash = simpleHash;
 	this.showDistro = showDistro;
+	this.betterHash = betterHash;
 	this.put = put;
 	//this.get = get;
 }
@@ -29,4 +30,16 @@ function showDistro(){
 			console.log(i + ":" + this.table[i]);
 		}
 	}
+}
+
+function betterHash(string,arr){
+	const H = 37;
+	var total = 0;
+	for(let i = 0; i < string.length; i++){
+		total += H * total + string.charCodeAt(i);
+	}
+	
+	total = total % this.table.length;
+	
+	return parseInt(total);
 }
