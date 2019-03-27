@@ -1,14 +1,19 @@
 function Set(){
 	this.dataStore = [];
 	this.add = add;
-	//this.size = size;
+	this.size = size;
 	this.remove = remove;
 	this.contains = contains;
 	this.union = union;
 	this.intersect = intersect;
-	//this.subset = subset;
+	this.subset = subset;
 	//this.difference = difference;
 	this.show = show;
+}
+
+//集合的长度
+function size(){
+	return this.dataStore.length;
 }
 
 //集合中添加元素
@@ -74,4 +79,18 @@ function intersect(set){
 	}
 	
 	return tempSet;
+}
+
+//判断子集
+
+function subset(set){
+	if(this.size() > set.size()){
+		return false;
+	}else{
+		for(var member in this.dataStore){
+			if(!set.contains(member)){
+				return false;
+			}
+		}
+	}
 }
