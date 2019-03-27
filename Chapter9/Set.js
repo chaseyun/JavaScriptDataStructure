@@ -3,7 +3,8 @@ function Set(){
 	this.add = add;
 	//this.size = size;
 	this.remove = remove;
-	//this.union = union;
+	this.contains = contains;
+	this.union = union;
 	//this.intersect = intersect;
 	//this.subset = subset;
 	//this.difference = difference;
@@ -35,4 +36,28 @@ function remove(data){
 //显示集合中的元素
 function show(){
 	return this.dataStore;
+}
+
+
+function contains(data){
+	if(this.dataStore.indexOf(data) > -1){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+function union(set){
+	var tempSet = new Set();
+	for(let i = 0; i < this.dataStore.length; i++){
+		tempSet.add(this.dataStore[i])
+	}
+	
+	for(let i = 0; i < set.dataStore.length; i++){
+		if(!tempSet.contains(set.dataStore[i])){
+			tempSet.dataStore.push(set.dataStore[i]);
+		}
+	}
+	
+	return tempSet;
 }
