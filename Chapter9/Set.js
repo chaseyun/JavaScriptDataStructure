@@ -5,7 +5,7 @@ function Set(){
 	this.remove = remove;
 	this.contains = contains;
 	this.union = union;
-	//this.intersect = intersect;
+	this.intersect = intersect;
 	//this.subset = subset;
 	//this.difference = difference;
 	this.show = show;
@@ -47,6 +47,7 @@ function contains(data){
 	}
 }
 
+//求并集
 function union(set){
 	var tempSet = new Set();
 	for(let i = 0; i < this.dataStore.length; i++){
@@ -56,6 +57,19 @@ function union(set){
 	for(let i = 0; i < set.dataStore.length; i++){
 		if(!tempSet.contains(set.dataStore[i])){
 			tempSet.dataStore.push(set.dataStore[i]);
+		}
+	}
+	
+	return tempSet;
+}
+
+//求合集
+function intersect(set){
+	var tempSet = new Set();
+	
+	for(let i = 0; i < this.dataStore.length; i++){
+		if(set.contains(this.dataStore[i])){
+			tempSet.add(this.dataStore[i]);
 		}
 	}
 	
