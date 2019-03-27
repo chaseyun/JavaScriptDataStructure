@@ -7,7 +7,7 @@ function Set(){
 	this.union = union;
 	this.intersect = intersect;
 	this.subset = subset;
-	//this.difference = difference;
+	this.difference = difference;
 	this.show = show;
 }
 
@@ -93,4 +93,16 @@ function subset(set){
 			}
 		}
 	}
+}
+
+//补集
+function difference(set){
+	var tempSet = new Set();
+	for(let i = 0; i < this.dataStore.length; i++){
+		if(!set.contains(this.dataStore[i])){
+			tempSet.add(this.dataStore[i]);
+		}
+	}
+	
+	return tempSet;
 }
