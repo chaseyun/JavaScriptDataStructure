@@ -10,9 +10,9 @@ function show(){
 }
 
 function BST(){
-	this.root = root;
+	this.root = null;
 	this.insert = insert;
-	this.inorder = inprder;
+	this.inorder = inorder;
 }
 
 function insert(data){
@@ -24,8 +24,28 @@ function insert(data){
 		var current = this.root;
 		var parent;
 		while(true){
-			
+			parent = current;
+			if(data < parent.data){
+				current = current.left;
+				if(current == null){
+					parent.left = n;
+					break;
+				}
+			}else{
+				current = current.right;
+				if(current == null){
+					parent.right = n;
+					break;
+				}
+			}
 		}
 	}
-	
+}
+
+function inorder(node){
+	if(!(node == null)){
+		inorder(node.left);
+		console.log(node.show() + "");
+		inorder(node.right);
+	}
 }
