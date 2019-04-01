@@ -13,6 +13,8 @@ function BST(){
 	this.root = null;
 	this.insert = insert;
 	this.inorder = inorder;
+	this.preorder = preorder;
+	this.postorder = postorder;
 }
 
 function insert(data){
@@ -47,5 +49,21 @@ function inorder(node){
 		inorder(node.left);
 		console.log(node.show() + "");
 		inorder(node.right);
+	}
+}
+
+function preorder(node){
+	if(!(node == null)){
+		console.log(node.show() + "");
+		preorder(node.left);
+		preorder(node.right);
+	}
+}
+
+function postorder(node){
+	if(!(node == null)){
+		postorder(node.left);
+		postorder(node.right);
+		console.log(node.show() + "");
 	}
 }
