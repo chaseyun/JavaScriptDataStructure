@@ -4,6 +4,7 @@ function Vertex(label){
 
 function Graph(v){
 	this.vertices = v;
+	this.vertexList = [];
 	this.edges = 0;
 	this.adj = [];
 	this.edgeTo = [];
@@ -24,6 +25,9 @@ function Graph(v){
 	//查找最短路径
 	this.pathTo = pathTo;
 	this.hasPathTo = hasPathTo;
+	//拓扑排序
+	this.topSortHelper = topSortHelper;
+	this.topSort = topSort;
 }
 
 function addEdge(v,w){
@@ -32,14 +36,31 @@ function addEdge(v,w){
 	this.edges++;
 }
 
+// function showGraph(){
+// 	for(let i = 0; i < this.vertices; i++){
+// 		// console.log(i + " ->");
+// 		for(let j = 0; j < this.vertices; j++){
+// 			if(this.adj[i][j] != undefined){
+// 				console.log(i + ' ->' + this.adj[i][j] + '  ');
+// 			}
+// 		}
+// 	}
+// }
+
 function showGraph(){
-	for(let i = 0; i < this.vertices; i++){
-		// console.log(i + " ->");
-		for(let j = 0; j < this.vertices; j++){
+	var visited = [];
+	for(var i = 0; i < this.vertices; i++){
+		// console.log(this.vertexList[i] + " -> ");
+		visited.push(this.vertexList[i]);
+		for(var j = 0; j < this.vertices; j++){
 			if(this.adj[i][j] != undefined){
-				console.log(i + ' ->' + this.adj[i][j] + '  ');
+				if(visited.indexOf(this.vertexList[j]) < 0){
+					// console.log(this.vertexList[j] + '');
+				}
 			}
 		}
+		
+		visited.pop();
 	}
 }
 
@@ -96,4 +117,42 @@ function pathTo(v){
 
 function hasPathTo(v){
 	return this.marked[v];
+}
+
+//拓扑排序
+function topSort(){
+	var stack = [];
+	var visited = [];
+	for(let i = 0; i < this.vertices; i++){
+		visited[i] = false;
+	}
+	for(let i = 0; i < this.vertices; i++){
+		if(visited[i] == false){
+			this.topSortHelper(i,visited,stack);
+		}
+	}
+	
+	for(let i = 0; i < stack.length; i++){
+		// console.log(stack);
+		if(stack[i] != undefined && stack[i] !== false){
+			// console.log(stack[i]);
+			console.log(this.vertexList[stack[i]]);
+		}
+	}
+	
+	console.log(stack)
+}
+
+function topSortHelper(v,visited,stack){
+	visited[v] = true;
+	// console.log(Object.prototype.toString.call(this.adj[v]));
+	for(var w of this.adj[v]){
+		// console.log(this.adj[v]);
+		if(!visited[w]){
+			this.topSortHelper(w,visited,stack);
+		}
+		
+	}
+	
+	stack.unshift(v);
 }
