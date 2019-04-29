@@ -6,6 +6,7 @@ function Graph(v){
 	this.vertices = v;
 	this.edges = 0;
 	this.adj = [];
+	this.edgeTo = [];
 	for(let i = 0; i < this.vertices; i++){
 		this.adj[i] = [];
 		// this.adj[i].push("");
@@ -19,7 +20,7 @@ function Graph(v){
 		this.marked[i] = false;
 	}
 	
-	
+	this.bfs = bfs;
 }
 
 function addEdge(v,w){
@@ -48,6 +49,25 @@ function dfs(v){
 	for (var w of this.adj[v]){
 		if( !this.marked[w]){
 			this.dfs(w);
+		}
+	}
+}
+
+function bfs(s){
+	var queue = [];
+	this.marked[s] = true;
+	queue.push(s);
+	while(queue.length > 0){
+		var v = queue.shift();
+		if(typeof(v) != 'string'){
+			console.log("Visited vertex: " + v);
+		}
+		for(var w of this.adj[v]){
+			if(!this.marked[w]){
+				this.edgeTo[w] = v;
+				this.marked[w] = true;
+				queue.push(w);
+			}
 		}
 	}
 }
