@@ -13,14 +13,17 @@ function Graph(v){
 	}
 	this.addEdge = addEdge;
 	this.showGraph = showGraph;
-	
+	//深度优先遍历
 	this.dfs = dfs;
 	this.marked = [];
 	for(let i = 0; i < this.vertices; i++){
 		this.marked[i] = false;
 	}
-	
+	//广度优先遍历
 	this.bfs = bfs;
+	//查找最短路径
+	this.pathTo = pathTo;
+	this.hasPathTo = hasPathTo;
 }
 
 function addEdge(v,w){
@@ -40,6 +43,7 @@ function showGraph(){
 	}
 }
 
+//深度优先遍历
 function dfs(v){
 	this.marked[v] = true;
 	if(this.adj[v] != undefined){
@@ -53,6 +57,7 @@ function dfs(v){
 	}
 }
 
+//广度优先遍历
 function bfs(s){
 	var queue = [];
 	this.marked[s] = true;
@@ -70,4 +75,25 @@ function bfs(s){
 			}
 		}
 	}
+}
+
+//查找最短路径
+function pathTo(v){
+	var source = 0;
+	if(!this.hasPathTo(v)){
+		return undefined;
+	}
+	
+	var path = [];
+	for(var i = v; i != source; i = this.edgeTo[i]){
+		path.push(i);
+	}
+	
+	path.push(source);
+	
+	return path;
+}
+
+function hasPathTo(v){
+	return this.marked[v];
 }
