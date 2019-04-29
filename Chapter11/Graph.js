@@ -12,6 +12,14 @@ function Graph(v){
 	}
 	this.addEdge = addEdge;
 	this.showGraph = showGraph;
+	
+	this.dfs = dfs;
+	this.marked = [];
+	for(let i = 0; i < this.vertices; i++){
+		this.marked[i] = false;
+	}
+	
+	
 }
 
 function addEdge(v,w){
@@ -27,6 +35,19 @@ function showGraph(){
 			if(this.adj[i][j] != undefined){
 				console.log(i + ' ->' + this.adj[i][j] + '  ');
 			}
+		}
+	}
+}
+
+function dfs(v){
+	this.marked[v] = true;
+	if(this.adj[v] != undefined){
+		console.log("Visited vertex: " + v);
+	}
+	
+	for (var w of this.adj[v]){
+		if( !this.marked[w]){
+			this.dfs(w);
 		}
 	}
 }
