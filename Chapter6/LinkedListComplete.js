@@ -53,3 +53,8 @@ function remove(item){
 		prevNode.next = prevNode.next.next;
 	}
 }
+
+//
+function show(){
+	
+}
