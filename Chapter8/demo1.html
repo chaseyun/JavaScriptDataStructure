@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>demo1</title>
+	</head>
+	<body>
+		<script src="HashTable.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var someNames = ["David", "Jennifer", "Donnie", "Raymond","Cynthia", "Mike", "Clayton", "Danny", "Jonathan"];
+			
+			var hTable = new HashTable();
+			
+			for(let i = 0; i < someNames.length; i++){
+				hTable.put(someNames[i]);
+			}
+			
+			hTable.showDistro();
+		</script>
+	</body>
+</html>

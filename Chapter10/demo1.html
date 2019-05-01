@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>demo1</title>
+	</head>
+	<body>
+		<script src="BST.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var nums = new BST();
+			nums.insert(56);
+			nums.insert(22);
+			nums.insert(81);
+			nums.insert(10);
+			nums.insert(30);
+			nums.insert(77);
+			nums.insert(78);
+			console.log("Inorder traversal: ");
+			inorder(nums.root);
+		</script>
+	</body>
+</html>

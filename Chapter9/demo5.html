@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>demo5</title>
+	</head>
+	<body>
+		<script src="Set.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var cis = new Set();
+			var it = new Set();
+			cis.add("Clayton");
+			cis.add("Jennifer");
+			cis.add("Danny");
+			it.add("Bryan");
+			it.add("Clayton");
+			it.add("Jennifer");
+			var diff = new Set();
+			diff = cis.difference(it);
+			
+			console.log(diff.show());
+		</script>
+	</body>
+</html>

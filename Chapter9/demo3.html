@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>demo3</title>
+	</head>
+	<body>
+		<script src="Set.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var cis = new Set();
+			
+			cis.add("Mike");
+			cis.add("Clayton");
+			cis.add("Jennifer");
+			cis.add("Raymond");
+			
+			var dmp = new Set();
+			
+			dmp.add("Raymond");
+			dmp.add("Cynthia");
+			dmp.add("Bryan");
+			
+			var inter = cis.intersect(dmp);
+			console.log(inter.show())
+		</script>
+	</body>
+</html>

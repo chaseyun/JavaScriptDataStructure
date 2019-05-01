@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>demo1</title>
+	</head>
+	<body>
+		<script src="dictionary.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			let pbook = new Dictionary();
+			
+			pbook.add('追云','120');
+			pbook.add('青梅竹马散天涯','112');
+			pbook.add('石三伢子逆袭','105');
+			pbook.add('追小云','daughter');
+			pbook.add('宋二狗','son');
+			
+			
+			pbook.showAll();
+			//pbook.remove('石三伢子逆袭');
+			pbook.showAll();
+			console.log(pbook.dataStore);
+			console.log(pbook);
+			console.log(Object.keys(pbook.dataStore));
+			console.log(pbook.find('追云'));
+			
+			console.log(pbook.count());
+			pbook.clear();
+			console.log(pbook.count());
+		</script>
+	</body>
+</html>
