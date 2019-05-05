@@ -7,7 +7,12 @@
 	<body>
 		<script src="CArray.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			
+			var numElements = 5;
+			var myNums = new CArray(numElements);
+			myNums.setData();
+			console.log(myNums.show());
+			myNums.bubbleSort();
+			console.log(myNums.show());
 		</script>
 	</body>
 </html>

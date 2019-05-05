@@ -11,6 +11,9 @@ function CArray(numElements){
 	for(var i = 0; i < numElements; i++){
 		this.dataStore[i] = i;
 	}
+	
+	//冒泡排序
+	this.bubbleSort = bubbleSort;
 }
 
 function setData(){
@@ -41,8 +44,22 @@ function show(){
 	return restr;
 }
 
-function swap(arr,index,index2){
+function swap(arr,index1,index2){
 	var temp = arr[index1];
 	arr[index1] = arr[index2];
 	arr[index2] = temp;
+}
+
+//冒泡排序
+function bubbleSort(){
+	var numElements = this.dataStore.length;
+	var temp;
+	for(var i = numElements; i >= 2; i--){
+		for(j = 0; j <= i - 1; j++){
+			if(this.dataStore[j] > this.dataStore[j+1]){
+				swap(this.dataStore,j,j+1);
+			}
+		}
+		console.log(this.show());
+	}
 }
