@@ -4,7 +4,7 @@ function CArray(numElements){
 	this.numElements = numElements;
 	this.insert = insert;
 	this.show = show;
-	this.clear = claer;
+	this.clear = clear;
 	this.setData = setData;
 	this.swap = swap;
 	
@@ -32,7 +32,7 @@ function insert(element){
 function show(){
 	var restr = "";
 	for(var i = 0; i < this.dataStore.length; i++){
-		restr += this.dataStore[i] + "";
+		restr += this.dataStore[i] + " ";
 		if(i > 0 && i % 10 == 0){
 			restr += "\n";
 		}
