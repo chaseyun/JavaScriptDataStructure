@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>demo7</title>
+	</head>
+	<body>
+		<script src="CArray.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function qSort(arr){
+				if(arr.length == 0){
+					return [];
+				}
+				
+				var lesser = [];
+				var grater = [];
+				var pivot = arr[0];
+				for(var i = 1; i < arr.length; i++){
+					if(arr[i] < pivot){
+						lesser.push(arr[i]);
+					}else{
+						grater.push(arr[i]);
+					}
+				}
+				
+				return qSort(lesser).concat(pivot,qSort(grater));
+			}
+			
+			var a = [];
+			for(var i = 0; i < 10; i++){
+				a[i] = Math.floor((Math.random()*100) + 1);
+			}
+			
+			console.log(a);
+		
+			console.log(qSort(a));
+		</script>
+	</body>
+</html>
