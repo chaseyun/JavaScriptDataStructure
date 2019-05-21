@@ -14,6 +14,12 @@ function CArray(numElements){
 	
 	//冒泡排序
 	this.bubbleSort = bubbleSort;
+	
+	//选择排序
+	this.selectionSort = selectionSort;
+	
+	//插入排序
+	this.insertSort = insertSort;
 }
 
 function setData(){
@@ -48,6 +54,7 @@ function swap(arr,index1,index2){
 	var temp = arr[index1];
 	arr[index1] = arr[index2];
 	arr[index2] = temp;
+	// console.log(this.show());
 }
 
 //冒泡排序
@@ -63,3 +70,37 @@ function bubbleSort(){
 		console.log(this.show());
 	}
 }
+
+//选择排序
+function selectionSort(){
+	var min;
+	var temp;
+	for(var i = 0; i < this.dataStore.length - 1; i++){
+		min = i;
+		for(var j = i + 1; j < this.dataStore.length ; j++ ){
+			if(this.dataStore[j] < this.dataStore[min]){
+				min = j;
+			}
+			swap(this.dataStore,i,min);
+		}
+	}
+}
+
+//插入排序
+function insertSort(){
+	var temp;
+	var j;
+	for(var i = 0; i < this.dataStore.length; i++){
+		temp = this.dataStore[i];
+		j = i;
+		
+		while(j > 0 && (this.dataStore[j - 1] >= temp)){
+			this.dataStore[j] = this.dataStore[j -1];
+			j--;
+		}
+		
+		this.dataStore[j] = temp
+	}
+}
+
+//希尔排序
