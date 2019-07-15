@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <title>查找某个值返回下标</title>
+</head>
+<body>
+    <script>
+        function seqSearch(arr,data){
+            for(var i = 0; i < arr.length; i++){
+                if(arr[i] == data){
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        let nums = [];
+
+        for(let i = 0; i < 100; i++){
+            nums[i] = Math.floor(Math.random()*101);
+        }
+
+        console.log(nums);
+
+        let position = seqSearch(nums,77);
+        if(position > -1){
+            console.log(77 + "的index值为" + position)
+        }else{
+            console.log(77 + "不存在该数组当中！");
+        }
+    </script>
+</body>
+</html>
