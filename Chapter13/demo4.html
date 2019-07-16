@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <title>查找最大值</title>
+</head>
+<body>
+    <script>
+        function findMax(arr){
+            var max = arr[0];
+            for(let i = 1; i <  arr.length; i++){
+                if(arr[i] > max){
+                    max = arr[i];
+                }
+            }
+
+            return max;
+        }
+
+        let nums = [];
+        for(let i = 0; i < 100; i++){
+            nums[i] = Math.floor(Math.random()*101);
+        }
+
+        console.log(nums);
+
+        let maxNum = findMax(nums);
+
+        console.log(maxNum);
+        
+    </script>
+</body>
+</html>

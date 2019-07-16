@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <title>查找最小值</title>
+</head>
+<body>
+    <script>
+        function findMIn(arr){
+            var min = arr[0];
+            for(var i = 1; i < arr.length; i++){
+                if(arr[i] < min){
+                    min = arr[i];
+                }
+            }
+
+            return min;
+        }
+
+        var nums = [];
+        for(let i = 0; i < 100; i++){
+            nums[i] = Math.floor(Math.random()*101);
+        }
+
+        var minNum = findMIn(nums);
+
+        console.log(nums);
+
+        console.log(minNum);
+    </script>
+</body>
+</html>

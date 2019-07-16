@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <title>自组织顺序查找</title>
+</head>
+<body>
+    <script>
+        function seqSearch(arr,data){
+            for(let i = 0; i < arr.length; i++){
+                if(arr[i] == data && i > (arr.length * 0.2)){
+                    swap(arr,i,0);
+
+                    return true;
+                }else if(arr[i] == data){
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        function swap(arr,index,index1){
+            temp = arr[index];
+            arr[index] = arr[index1];
+            arr[index1] = temp; 
+        }
+
+        let nums = [5,8,76,4,3,2,1,4,9,0];
+
+        for(let i = 0; i < 4; i++){
+            seqSearch(nums,4);
+
+            console.log(nums);
+        }
+    </script>
+</body>
+</html>
