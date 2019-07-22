@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <title>动态规划-寻找最长子串</title>
+</head>
+<body>
+    <script>
+        function lcs(word1,word2){
+            var max = 0;
+            var index = 0;
+            var lcsarr = new Array(word1.length);
+            //console.log(lcsarr);
+            for(var i =0; i <= word1.length; i++){
+                lcsarr[i] = new Array(word2.length);
+
+                //console.log(lcsarr);
+                for(var j = 0; j <= word2.length; j++){
+                    lcsarr[i][j] = 0;
+                }
+            }
+
+            for(let i =0; i <= word1.length; i++){
+                for(let j=0; j <= word2.length; j++){
+                    if(i === 0 || j === 0){
+                        lcsarr[i][j] = 0;
+                    }else{
+                        if(word1[i - 1] === word2 [j - 1]){
+                            lcsarr[i][j] = lcsarr[i - 1][j - 1] + 1;
+                        }else{
+                            lcsarr[i][j] = 0;
+                        }
+                    }
+                    if(max < lcsarr[i][j]){
+                        max = lcsarr[i][j];
+                        index = i;
+                    }
+                }
+            }
+
+            var str = "";
+            if(max === 0){
+                return "";
+            }else{
+                for(let i = index - max; i < max; ++i){
+                    str += word2[i];
+                }
+
+                return str;
+            }
+        }
+
+        console.log(lcs("chasey","c"));
+    </script>
+</body>
+</html>
