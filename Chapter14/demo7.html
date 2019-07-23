@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <title>背包问题-贪心算法</title>
+</head>
+<body>
+    <script>
+        function knapsack(values,weights,capacity){
+            let load = 0;
+            let i = 0;
+            let w = 0;
+            while(load < capacity && i < 4){
+                if(weights[i] <= (capacity - load)){
+                    w += values[i];
+                    load += weights[i];
+                }else{
+                    let r = (capacity - load)/weights[i];
+                    w += r*values[i];
+                    load += weights[i];
+                }
+
+                i++;
+            }
+
+            return w;
+        }
+
+        let items = ["A","B","C","D"];
+        let values = [50,140,60,60];
+        let weights = [5,20,10,12];
+        let capacity = 30;
+
+        console.log(knapsack(values,weights,capacity));
+    </script>
+</body>
+</html>
