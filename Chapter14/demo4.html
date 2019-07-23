@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <title>背包问题-递归</title>
+</head>
+<body>
+    <script>
+        function max(a,b){
+            return (a > b) ? a : b;
+        }
+
+        //capacity背包的容积number size物品的尺寸array value 物品的价值array n保险箱中的物品number
+        function knapsack(capacity,size,value,n){
+            if(n === 0 || capacity === 0){
+                return 0;
+            }
+
+            
+            if(size[n - 1] > capacity){
+                return knapsack(capacity,size,value,n - 1);
+            }else{
+                return max(value[n -1] + knapsack(capacity - size[n - 1],size,value,n - 1),knapsack(capacity,size,value,n - 1));
+            }
+        }
+
+        let value = [4,5,10,11,13];
+        let size = [3,4,7,8,9];
+        let capacity = 16;
+        let n = 5;
+
+        //console.log(size[n - 1]);
+        console.log(knapsack(capacity,size,value,n));
+    </script>
+</body>
+</html>

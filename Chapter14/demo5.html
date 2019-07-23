@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <title>背包问题-动态规划</title>
+</head>
+<body>
+    <script>
+        function max(a,b){
+            return (a > b) ? a : b;
+        }
+
+        function dknapsack(capacity,size,value,n){
+            var k = [];
+            for(let i = 0; i <= capacity + 1; i++){
+                k[i] = [];
+            }
+            for(let i = 0; i <= n; i++){
+                for(let x = 0; x <= capacity; x++){
+                    if(i === 0||x === 0){
+                        k[i][x] = 0;
+                    }else if(size[i-1] <= x){
+                        k[i][x] = max(value[i - 1] + k[i - 1][x - size[i - 1]],k[i - 1][x]);
+                    }else{
+                        k[i][x] = k[i - 1][x];
+                    }
+
+                    //console.log(k[i][x] + " ");
+                }
+                //console.log(0);
+            }
+
+            return k[n][capacity];
+        }
+
+        let value = [4,5,10,11,13];
+        let size = [3,4,7,8,9];
+        let capacity = 16;
+        let n = 5;
+
+        console.log(dknapsack(capacity,size,value,n));
+    </script>
+</body>
+</html>
